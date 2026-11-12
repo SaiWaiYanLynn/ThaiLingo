@@ -1,56 +1,61 @@
-# Welcome to your Expo app 👋
+# ThaiLingo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Survive Thailand in 30 phrases. ThaiLingo is an offline English-to-Thai phrasebook for iPhone, built with React Native and Expo. Team: Wai Yan Lynn and Pyae Sone.
 
-## Get started
+## Run the app on your iPhone
 
-1. Install dependencies
+1. Install Expo Go from the App Store.
+2. Put the iPhone and the Mac on the same Wi-Fi network.
+3. In this folder, run:
 
    ```bash
    npm install
-   ```
-
-2. Start the app
-
-   ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. Scan the QR code in the terminal with the iPhone camera. The app opens in Expo Go.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+If the audio is silent, turn off silent mode on the iPhone. If you see "Audio is not available", add a Thai voice in Settings > Accessibility > Spoken Content > Voices.
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Check the code
 
 ```bash
-npm run reset-project
+npm test            # unit and component tests (Jest)
+npm run typecheck   # TypeScript strict mode
+npx expo lint       # ESLint
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+## Project structure
 
-### Other setup steps
+| Folder | Content |
+| --- | --- |
+| `src/app/` | Screens. Each file is a route (Expo Router). |
+| `src/components/` | Reusable UI: phrase row, topic card, buttons. |
+| `src/context/` | Favorites, settings and speech state. |
+| `src/data/` | `phrases.json` (all 30 phrases), types, helpers, validation. |
+| `src/storage/` | Safe AsyncStorage read and write. |
+| `src/theme/` | Design tokens and typography. |
+| `__tests__/` | Jest tests. |
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+To change a phrase, edit `src/data/phrases.json` only. The tests check that there are 6 topics and 30 phrases.
 
-## Learn more
+## Requirement status
 
-To learn more about developing your project with Expo, look at the following resources:
+| ID | Feature | Status |
+| --- | --- | --- |
+| FR-01 | First-launch introduction | Built |
+| FR-02 | Home grid of six topics | Built |
+| FR-03 | Topic phrase list | Built |
+| FR-04 | Phrase card content | Built |
+| FR-05 | Audio, one phrase at a time | Built with text-to-speech |
+| FR-06 | Phrase detail | Built |
+| FR-07 | Show to local | Built |
+| FR-08 | Favorites saved on the phone | Built |
+| FR-09 | Favorites screen | Built |
+| FR-10 | Search | Built |
+| FR-11 | Settings | Built |
+| FR-12 | Emergency numbers | Built, numbers not yet verified |
+| FR-13 | Works offline | Needs a test on a real iPhone |
+| FR-14 | Error handling | Built |
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Nobody tested these features on a real iPhone yet.
