@@ -38,6 +38,12 @@ export default function PhraseDetailScreen() {
         {settings.showRomanization ? (
           <Text style={[styles.roman, { fontSize: sizes.romanization + 2 }]}>{phrase.romanization}</Text>
         ) : null}
+        {phrase.literal ? (
+          <View style={styles.literalBox}>
+            <Text style={styles.literalLabel}>Word by word</Text>
+            <Text style={[styles.literal, { fontSize: sizes.romanization + 2 }]}>{phrase.literal}</Text>
+          </View>
+        ) : null}
         <View style={styles.actions}>
           <PlayButton large playing={playingId === phrase.id} onPress={() => togglePlay(phrase.id, phrase.thai)} label={en} />
           <HeartButton active={isFavorite(phrase.id)} onPress={() => toggle(phrase.id)} label={en} />
@@ -51,6 +57,13 @@ export default function PhraseDetailScreen() {
         style={({ pressed }) => [styles.show, { opacity: pressed ? 0.85 : 1 }]}>
         <Icon name="person.wave.2.fill" size={22} color={colors.onPrimary} />
         <Text style={styles.showText}>Show to local</Text>
+      </Pressable>
+      <Pressable
+        onPress={() => router.push({ pathname: '/feedback/[id]', params: { id: phrase.id } })}
+        accessibilityRole="button"
+        accessibilityHint="Opens a form to report a problem with this phrase"
+        style={styles.report}>
+        <Text style={styles.reportText}>Report a problem with this phrase</Text>
       </Pressable>
     </ScrollView>
   );
@@ -71,6 +84,9 @@ const styles = StyleSheet.create({
   center: { textAlign: 'center' },
   english: { color: colors.text, fontWeight: '600', textAlign: 'center' },
   roman: { color: colors.textMuted, fontStyle: 'italic', textAlign: 'center' },
+  literalBox: { alignItems: 'center', gap: 2, marginTop: spacing.sm },
+  literalLabel: { color: colors.textMuted, fontSize: 12, fontWeight: '700', textTransform: 'uppercase' },
+  literal: { color: colors.text, textAlign: 'center' },
   actions: { flexDirection: 'row', alignItems: 'center', gap: spacing.xl, marginTop: spacing.sm },
   show: {
     minHeight: minTarget + 8,
@@ -81,5 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.sm,
   },
+  report: { minHeight: minTarget, alignItems: 'center', justifyContent: 'center' },
+  reportText: { color: colors.textMuted, fontSize: 15, textDecorationLine: 'underline' },
   showText: { color: colors.onPrimary, fontSize: 18, fontWeight: '700' },
 });

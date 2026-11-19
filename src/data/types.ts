@@ -12,6 +12,7 @@ export interface Phrase {
   topicId: TopicId;
   thai: string;
   romanization: string;
+  literal?: string; // word-by-word English gloss, words separated by ' · '
   meaning: { en: string }; // keyed by language so more can be added later
   order: number;
 }

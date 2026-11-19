@@ -24,9 +24,10 @@ export default function ShowToLocalScreen() {
       <Pressable
         onPress={() => router.back()}
         accessibilityRole="button"
-        accessibilityLabel="Close"
+        accessibilityLabel="Back to phrase"
         style={styles.close}>
-        <Icon name="xmark" size={24} color={colors.showText} />
+        <Icon name="xmark" size={18} color={colors.showText} />
+        <Text style={styles.closeText}>Back</Text>
       </Pressable>
       <View style={styles.center}>
         {phrase ? (
@@ -52,13 +53,18 @@ export default function ShowToLocalScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.showBackground, paddingHorizontal: spacing.xl },
   close: {
-    alignSelf: 'flex-end',
-    width: minTarget,
-    height: minTarget,
+    alignSelf: 'flex-start',
+    minHeight: minTarget,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: '#555555',
     marginTop: spacing.sm,
   },
+  closeText: { color: colors.showText, fontSize: 17, fontWeight: '600' },
   center: { flex: 1, justifyContent: 'center' },
   thai: { textAlign: 'center' },
   english: { color: '#BDBDC6', fontSize: 18, textAlign: 'center' },

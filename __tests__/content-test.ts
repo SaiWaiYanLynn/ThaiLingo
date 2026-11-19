@@ -33,6 +33,10 @@ describe('content data', () => {
     expect(getPhrase('nope')).toBeUndefined();
   });
 
+  it('gives every phrase a word-by-word literal gloss', () => {
+    getAllPhrases().forEach((p) => expect(p.literal?.trim()).toBeTruthy());
+  });
+
   it('lists all 30 phrases', () => {
     expect(getAllPhrases()).toHaveLength(30);
   });

@@ -39,6 +39,7 @@ function RootNavigator() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="topic/[id]" options={{ title: '' }} />
           <Stack.Screen name="phrase/[id]" options={{ title: '' }} />
+          <Stack.Screen name="feedback/[id]" options={{ title: 'Report a problem' }} />
           <Stack.Screen
             name="show/[id]"
             options={{ presentation: 'fullScreenModal', headerShown: false, animation: 'fade' }}
