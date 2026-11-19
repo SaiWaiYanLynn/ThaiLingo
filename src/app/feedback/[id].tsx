@@ -47,7 +47,8 @@ export default function FeedbackScreen() {
   return (
     <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Stack.Screen options={{ title: 'Report a problem' }} />
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
         {phrase ? (
           <View style={styles.phrase}>
             <Text style={styles.english}>{phrase.meaning.en}</Text>
@@ -89,6 +90,8 @@ export default function FeedbackScreen() {
               value={message}
               onChangeText={setMessage}
               multiline
+              returnKeyType="done"
+              submitBehavior="blurAndSubmit"
               maxLength={MAX_MESSAGE_LENGTH}
               placeholder="For example: a Thai person says this is more polite."
               placeholderTextColor={colors.textMuted}

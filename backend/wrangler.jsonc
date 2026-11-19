@@ -4,10 +4,11 @@
   "compatibility_date": "2026-11-01",
   "d1_databases": [
     {
+      // The name the code uses: env.DB (see src/index.ts)
       "binding": "DB",
+      // The name of the database in Cloudflare
       "database_name": "thailingo",
-      // Replace with the id printed by: npx wrangler d1 create thailingo
-      "database_id": "00000000-0000-0000-0000-000000000000"
+      "database_id": "dd451670-5c0e-460c-88e5-addc09d220bb"
     }
   ]
 }
